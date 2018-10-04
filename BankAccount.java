@@ -8,4 +8,14 @@ public class BankAccount{
 		accountID = newaccountID;
 		password = newpassword;
 	}
+	public String toString() {
+		return accountID + "\t" + balance;
+	}
+	public boolean deposit(int money) {
+		if (money >= 0) {
+			balance += money;
+			return true;
+		}
+		return false;
+	}
 }
