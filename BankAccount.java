@@ -25,12 +25,10 @@ public class BankAccount{
 		}
 		return false;
 	}
-	private boolean authenticate(String attempt) {
-		return password == attempt;
+	private boolean authenticate(String password) {
+		return this.password == password;
 	}
 	public boolean transferTo(BankAccount other, double amount, String password) {
-		if (authenticate(password) && withdraw(amount)) {
-			other.deposit(amount);
-		}
+		return authenticate(password) && withdraw(amount) && other.deposit(amount);
 	}
 }
