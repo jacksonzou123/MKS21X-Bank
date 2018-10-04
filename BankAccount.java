@@ -11,18 +11,26 @@ public class BankAccount{
 	public String toString() {
 		return accountID + "\t" + balance;
 	}
-	public boolean deposit(int money) {
+	public boolean deposit(double money) {
 		if (money >= 0) {
 			balance += money;
 			return true;
 		}
 		return false;
 	}
-	public boolean withdraw(int money) {
+	public boolean withdraw(double money) {
 		if (balance >= money) {
 			balance -= money;
 			return true;
 		}
 		return false;
+	}
+	private boolean authenticate(String attempt) {
+		return password == attempt;
+	}
+	public boolean transferTo(BankAccount other, double amount, String password) {
+		if (authenticate(password) && withdraw(amount)) {
+			other.deposit(amount);
+		}
 	}
 }
